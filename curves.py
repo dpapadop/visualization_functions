@@ -36,6 +36,8 @@ ax = sns.scatterplot(x="point", y="y", hue="cat", data=data_tmp[data_tmp.point =
 ax.set_title('title')
 ax.set_ylabel('y label')
 ax.set_xlabel('x label')
+vals = ax.get_yticks()
+ax.set_yticklabels(['{:,.2%}'.format(x) for x in vals])
 fmt = '${x:,.0f}'
 tick = mtick.StrMethodFormatter(fmt)
 ax.xaxis.set_major_formatter(tick)
