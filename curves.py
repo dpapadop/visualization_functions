@@ -2,6 +2,8 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib as mpl
+import numpy as np
+import matplotlib.ticker as mtick
 
 pd.set_option('max_columns', 50)
 pd.set_option('display.max_rows', 10)
@@ -34,5 +36,9 @@ ax = sns.scatterplot(x="point", y="y", hue="cat", data=data_tmp[data_tmp.point =
 ax.set_title('title')
 ax.set_ylabel('y label')
 ax.set_xlabel('x label')
+fmt = '${x:,.0f}'
+tick = mtick.StrMethodFormatter(fmt)
+ax.xaxis.set_major_formatter(tick)
+ax.set_xticks(np.arange(0, data_tmp.x.max(), data_tmp.x.max()/4))
 ax.legend(loc=(1.04, 0))
 plt.show()
